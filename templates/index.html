@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <style>
+        .place {
+            height: 220px;
+            width: 220px;
+            border: 2px solid black;
+            margin: 10px 30px;
+            display: inline-block;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+        #activity {
+            margin: 50px 150px;
+        }
+        #activity {
+            width: 1000px;
+            height: 140px;
+            margin-top: 50px;
+            overflow-y: scroll;
+            border: 2px solid black;
+        }
+        a:link, a:visited {
+            text-decoration: none;
+            border: 2px solid black;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Your gold: {{ session['gold'] }}
+    <br>
+    <a href="/reset">Reset</a>
+    <!-- farm -->
+    <div class="place">
+        <form action="/process_money" method="post">
+            <input type="hidden" name="building" value="farm">
+            <h3>Farm</h3>
+            <p>(earns 10-20 golds)</p>
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <!-- cave -->
+    <div class="place">
+        <form action="/process_money" method="post">
+            <input type="hidden" name="building" value="cave">
+            <h3>Cave</h3>
+            <p>(earns 5-10 golds)</p>
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <!-- house -->
+    <div class="place">
+        <form action="/process_money" method="post">
+            <input type="hidden" name="building" value="house">
+            <h3>House</h3>
+            <p>(earns 2-5 golds)</p>
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <!-- casino -->
+    <div class="place">
+        <form action="/process_money" method="post">
+            <input type="hidden" name="building" value="casino">
+            <h3>Casino</h3>
+            <p>(earns/takes 0-50 golds)</p>
+            <input type="submit" value="Find Gold!">
+        </form>
+    </div>
+    <div id="activity">
+        {{session['activity']|safe}} 
+    </div>
+</body>
+
+</html>
